@@ -21,7 +21,7 @@ export function AuthProvider({ children }) {
           // de crear el perfil en Firestore (redeemInvitationCode + guardar el doc). Un 404
           // acá es un estado transitorio esperado, no un error real — mostrarlo como toast
           // solo asusta al usuario mientras el registro, de hecho, sí se está completando.
-          const { data } = await api.get("/api/auth/profile", { skipGlobalErrorToast: true });
+          const { data } = await api.get("/auth/profile", { skipGlobalErrorToast: true });
           setProfile(data);
         } catch {
           setProfile(null);
@@ -38,7 +38,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{ firebaseUser, profile, loading, logout, refreshProfile: async () => {
-      const { data } = await api.get("/api/auth/profile", { skipGlobalErrorToast: true });
+      const { data } = await api.get("/auth/profile", { skipGlobalErrorToast: true });
       setProfile(data);
     } }}>
       {children}
