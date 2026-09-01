@@ -2,8 +2,12 @@ import axios from "axios";
 import { auth } from "./firebase";
 import { toastBridge } from "../context/ToastContext";
 
+// Se formatea la URL base para asegurar que incluya el prefijo /api y limpie barras sobrantes.
+const rawBaseUrl = import.meta.env.VITE_API_URL || "https://s-mart-power.onrender.com";
+const cleanBaseUrl = rawBaseUrl.replace(/\/+$/, "");
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: `${cleanBaseUrl}/api`,
 });
 
 // Antes de cada petición, adjuntamos el ID token de Firebase vigente.
