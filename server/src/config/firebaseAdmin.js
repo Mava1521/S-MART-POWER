@@ -1,13 +1,17 @@
 import admin from "firebase-admin";
 import { env } from "./env.js";
 
-// Se inicializa UNA sola vez. Este SDK tiene acceso total (ignora firestore.rules),
-// por eso TODA la lógica de permisos vive aquí en el backend, nunca solo en el cliente.
 if (!admin.apps.length) {
-  // Asegura que los saltos de línea de la clave privada se procesen correctamente en Render
-  const formattedPrivateKey = env.firebase.privateKey
-    ? env.firebase.privateKey.replace(/\\n/g, "\n")
-    : undefined;
+  // 1. Obtener la clave
+  let rawKey = env.firebase.privateKey || "";
+
+  // 2. Si viene envuelta en comillas extra en Render, quitárselas
+  if (rawKey.startsWith('"') && rawKey.endsWith('"')) {
+    rawKey = rawKey.substring(1, rawKey.length - 1);
+  }
+
+  // 3. Reemplazar saltos de línea dobles o simples escapados por saltos de línea reales
+  const formattedPrivateKey = rawKey.replace(/\\n/g, "\n");
 
   admin.initializeApp({
     credential: admin.credential.cert({
