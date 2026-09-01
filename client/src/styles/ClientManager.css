@@ -1,0 +1,289 @@
+/* ==========================================================================
+   CLIENT MANAGER STYLES (ISO & UX/UI Design System)
+   ========================================================================== */
+
+.client-manager-container {
+  padding: 24px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.cm-header {
+  margin-bottom: 24px;
+}
+
+.cm-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.cm-title-underline {
+  width: 36px;
+  height: 4px;
+  background-color: #E04F33;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.cm-subtitle {
+  color: #6B7280;
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+/* Search Bar (Full Width like Mockup) */
+.cm-search-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.cm-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9CA3AF;
+  pointer-events: none;
+}
+
+.cm-search-input {
+  width: 100%;
+  height: 48px;
+  padding-left: 48px;
+  padding-right: 16px;
+  border-radius: 12px;
+  border: 1px solid #D1D5DB;
+  background-color: #FFFFFF;
+  font-size: 0.9rem;
+  color: #111827;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cm-search-input:focus {
+  border-color: #E04F33;
+  box-shadow: 0 0 0 3px rgba(224, 79, 51, 0.1);
+}
+
+/* Table Card Wrapper */
+.cm-table-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.cm-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.cm-table th {
+  background-color: #F9FAFB;
+  padding: 16px 24px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #111827;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.cm-table th .th-content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cm-table td {
+  padding: 18px 24px;
+  border-bottom: 1px solid #F3F4F6;
+  vertical-align: middle;
+}
+
+.cm-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cm-table tr:hover {
+  background-color: #FAFAFA;
+}
+
+/* User Info Styles */
+.cm-user-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #111827;
+  display: block;
+}
+
+.cm-user-company {
+  font-size: 0.8rem;
+  color: #6B7280;
+  margin-top: 2px;
+  display: block;
+}
+
+.cm-user-email {
+  font-size: 0.88rem;
+  color: #374151;
+}
+
+/* Assignments Badges Section */
+.cm-assignments-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.cm-badge-event {
+  background-color: #FEF3C7;
+  color: #D97706;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cm-badge-zone {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cm-color-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.cm-no-zones {
+  font-size: 0.78rem;
+  color: #9CA3AF;
+  font-style: italic;
+}
+
+/* Action Buttons */
+.cm-actions-cell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cm-actions-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.cm-btn-action {
+  height: 34px;
+  padding: 0 12px;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+
+.cm-btn-edit {
+  color: #D97706;
+  border-color: #FDE68A;
+}
+
+.cm-btn-edit:hover {
+  background-color: #FFFBEB;
+  border-color: #F59E0B;
+}
+
+.cm-btn-delete {
+  color: #DC2626;
+  border-color: #FCA5A5;
+}
+
+.cm-btn-delete:hover {
+  background-color: #FEF2F2;
+  border-color: #EF4444;
+}
+
+/* Inline Edit Mode Form */
+.cm-edit-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cm-input-sm {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid #D1D5DB;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.cm-input-sm:focus {
+  border-color: #E04F33;
+}
+
+.cm-btn-save {
+  height: 36px;
+  padding: 0 14px;
+  background-color: #E04F33;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.cm-btn-save:hover {
+  background-color: #C83C22;
+}
+
+.cm-btn-cancel {
+  height: 36px;
+  padding: 0 12px;
+  background-color: #F3F4F6;
+  color: #4B5563;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.cm-btn-cancel:hover {
+  background-color: #E5E7EB;
+}
+
+.cm-empty-state {
+  padding: 48px;
+  text-align: center;
+  color: #6B7280;
+  font-size: 0.95rem;
+}

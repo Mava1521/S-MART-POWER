@@ -1,0 +1,337 @@
+/* ============================================================
+   AUTH — Login / Register (estilo marca S-MART)
+   Fondo de concierto + card clara (independiente del tema oscuro)
+   ============================================================ */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo de concierto */
+.auth-background {
+  position: absolute;
+  inset: 0;
+  background-color: #000; /* fallback */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* Overlay oscuro para que el texto se lea bien */
+.auth-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65));
+}
+
+.auth-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+/* Logo */
+.auth-logo {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 28px; /* espacio generoso entre logo y el título */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Tipografía */
+.auth-title {
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+.auth-subtitle {
+  margin: 0 0 var(--space-5);
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+/* Formulario */
+.auth-form {
+  text-align: left;
+}
+
+.auth-form .form-group {
+  margin-bottom: var(--space-4);
+}
+
+.auth-form .label {
+  color: #374151;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Input con icono */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  color: #9ca3af;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.auth-form .input {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  color: #1a1a1a;
+  padding: 12px 14px 12px 44px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+.auth-form .input::placeholder {
+  color: #9ca3af;
+}
+
+.auth-form .input:focus {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(255, 75, 11, 0.15);
+  outline: none;
+}
+
+.auth-form .input:disabled {
+  background: #f9fafb;
+  cursor: not-allowed;
+}
+
+/* Toggle mostrar/ocultar contraseña */
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  padding: 4px;
+  color: #9ca3af;
+  cursor: pointer;
+  display: flex;
+  border-radius: 6px;
+  transition: color 0.15s;
+}
+
+.password-toggle:hover {
+  color: #1a1a1a;
+}
+
+/* Botón principal (usa la marca) */
+.auth-form .btn-primary {
+  background: var(--color-brand);
+  color: var(--color-brand-text);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  margin-top: var(--space-2);
+}
+
+.auth-form .btn-primary:hover:not(:disabled) {
+  background: var(--color-brand-hover);
+  box-shadow: 0 4px 14px rgba(255, 75, 11, 0.35);
+}
+
+.auth-form .btn-primary:disabled {
+  opacity: 0.75;
+}
+
+/* Spinner de carga */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error */
+.auth-form .error-message,
+.error-message {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+/* Link de registro */
+.auth-switch {
+  margin-top: var(--space-5);
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.auth-switch a {
+  color: var(--color-brand);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  color: var(--color-brand-hover);
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .auth-title {
+    font-size: 1.35rem;
+  }
+}
+
+/* ============================================================
+   ESTILOS PARA REGISTRO Y MODAL EMERGENTE
+   ============================================================ */
+
+/* Encabezado con Ícono + Título Alineados (Mockup 1) */
+.auth-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.auth-avatar-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fdf2f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.auth-title-inline {
+  font-family: var(--font-display, sans-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+/* Modal Emergente */
+.auth-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: modal-fadeIn 0.2s ease-out;
+}
+
+.auth-modal-card {
+  width: 100%;
+  max-width: 620px; /* Ancho apaisado idéntico a la Foto 1 */
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 44px 40px 36px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: modal-popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-modal-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  background: transparent; /* Sin fondo interno */
+}
+
+.auth-modal-text-main {
+  font-size: 1.25rem;
+  font-weight: 400; /* Regular como en Foto 1 */
+  color: #111827;
+  margin: 0 0 20px;
+  line-height: 1.4;
+  max-width: 480px;
+}
+
+.auth-modal-text-sub {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #374151;
+  margin: 0 0 32px;
+  line-height: 1.5;
+  max-width: 540px;
+}
+
+.auth-modal-btn {
+  width: 22%;
+  max-width: 260px; /* Dimensiones del botón naranja redondeado */
+  padding: 14px 24px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  border-radius: 999px;
+  background-color: #E5533D !important;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.auth-modal-btn:hover {
+  background-color: #d4432d !important;
+  transform: translateY(-1px);
+}
+

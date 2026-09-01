@@ -1,0 +1,190 @@
+/* ==========================================================================
+   NOTIFICATIONS STYLES (ISO & UX/UI Design System)
+   ========================================================================== */
+
+.notifications-container {
+  padding: 24px 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.notif-header {
+  margin-bottom: 28px;
+}
+
+.notif-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notif-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.notif-badge-unread {
+  background-color: #FEF3C7;
+  color: #D97706;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.notif-title-underline {
+  width: 36px;
+  height: 4px;
+  background-color: #E04F33;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.notif-subtitle {
+  color: #6B7280;
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+/* List Container */
+.notif-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Notification Card */
+.notif-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.notif-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.notif-card-unread {
+  border-left: 4px solid #E04F33;
+}
+
+/* Circular Icon Wrapper */
+.notif-icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Main Content Area inside Card */
+.notif-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Type Badge */
+.notif-type-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.notif-message {
+  margin: 2px 0 0 0;
+  color: #1F2937;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.notif-time {
+  font-size: 0.78rem;
+  color: #6B7280;
+  margin-top: 2px;
+}
+
+/* Actions Section on the Right */
+.notif-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.notif-btn-link {
+  height: 36px;
+  padding: 0 16px;
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 10px;
+  color: #4B5563;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.notif-btn-link:hover {
+  background-color: #F9FAFB;
+  border-color: #9CA3AF;
+  color: #111827;
+}
+
+.notif-btn-read {
+  height: 36px;
+  padding: 0 12px;
+  background-color: #F3F4F6;
+  border: none;
+  border-radius: 10px;
+  color: #4B5563;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.notif-btn-read:hover {
+  background-color: #E5E7EB;
+  color: #111827;
+}
+
+.notif-empty-state {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  padding: 48px;
+  text-align: center;
+  color: #6B7280;
+  font-size: 0.95rem;
+}

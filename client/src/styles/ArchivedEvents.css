@@ -1,0 +1,237 @@
+/* ==========================================================================
+   ARCHIVED EVENTS STYLES (ISO & UX/UI Design System)
+   ========================================================================== */
+
+.archived-events-container {
+  padding: 24px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header & Search Toolbar */
+.ae-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.ae-header-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.ae-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.ae-title-underline {
+  width: 36px;
+  height: 4px;
+  background-color: #E04F33;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.ae-subtitle {
+  color: #6B7280;
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+/* Search Box aligned to right */
+.ae-search-container {
+  position: relative;
+  width: 280px;
+  margin-top: 4px;
+}
+
+.ae-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9CA3AF;
+  pointer-events: none;
+}
+
+.ae-search-input {
+  width: 100%;
+  height: 40px;
+  padding-left: 40px;
+  padding-right: 14px;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  background-color: #FFFFFF;
+  font-size: 0.88rem;
+  color: #111827;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ae-search-input:focus {
+  border-color: #E04F33;
+  box-shadow: 0 0 0 3px rgba(224, 79, 51, 0.1);
+}
+
+/* Cards Grid */
+.ae-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .ae-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .ae-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Single Event Card */
+.ae-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ae-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.ae-card-photo-wrapper {
+  width: 100%;
+  height: 180px;
+  background-color: #F9FAFB;
+  border-bottom: 1px solid #F3F4F6;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ae-card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ae-card-placeholder {
+  color: #9CA3AF;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.ae-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ae-event-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.6em;
+}
+
+.ae-event-date {
+  font-size: 0.8rem;
+  color: #6B7280;
+  margin-bottom: 16px;
+}
+
+/* Footer Buttons inside Card */
+.ae-card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ae-btn-secondary {
+  flex: 1;
+  height: 36px;
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  color: #374151;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.ae-btn-secondary:hover {
+  background-color: #F9FAFB;
+  border-color: #9CA3AF;
+  color: #111827;
+}
+
+.ae-btn-outline-danger {
+  flex: 0.8;
+  height: 36px;
+  background-color: #FFFFFF;
+  border: 1px solid #E04F33;
+  border-radius: 8px;
+  color: #E04F33;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.ae-btn-outline-danger:hover {
+  background-color: #E04F33;
+  color: #FFFFFF;
+}
+
+.ae-empty-state {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  padding: 48px;
+  text-align: center;
+  color: #6B7280;
+  font-size: 0.95rem;
+}

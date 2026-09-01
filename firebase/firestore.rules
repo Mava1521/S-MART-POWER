@@ -1,0 +1,64 @@
+rules_version = '2';
+
+// IMPORTANTE: el backend usa el Admin SDK, que IGNORA estas reglas por completo.
+// Estas reglas solo protegen el acceso DIRECTO desde el cliente (por si en el futuro
+// se agregan listeners en tiempo real desde React). La lógica de negocio real
+// (validar códigos, roles, límites) SIEMPRE vive en el backend Express.
+
+function isSignedIn() {
+  return request.auth != null;
+}
+
+function getRole() {
+  return request.auth.token.role;
+}
+
+function isAdmin() {
+  return isSignedIn() && getRole() == "admin";
+}
+
+function isAdminOrSubadmin() {
+  return isSignedIn() && (getRole() == "admin" || getRole() == "subadmin");
+}
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Perfiles: cada quien lee el suyo; admin/subadmin leen todos
+    match /users/{userId} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isAdminOrSubadmin());
+      allow write: if false; // solo el backend (Admin SDK) escribe perfiles
+    }
+
+    // Códigos de invitación: nunca legibles/escribibles directo desde el cliente
+    match /invitationCodes/{codeId} {
+      allow read, write: if false;
+    }
+
+    match /events/{eventId} {
+      allow read: if isAdminOrSubadmin();
+      allow write: if false; // solo backend
+
+      match /zones/{zoneId} {
+        allow read: if isAdminOrSubadmin();
+        allow write: if false;
+
+        match /zoneAssignments/{uid} {
+          // un usuario puede saber si ESA zona específica es suya
+          allow read: if isSignedIn() && (request.auth.uid == uid || isAdminOrSubadmin());
+          allow write: if false;
+        }
+      }
+    }
+
+    match /devices/{deviceId} {
+      allow read: if isSignedIn(); // los 3 roles pueden ver
+      allow write: if false; // solo backend (para validar serie única, subir imagen, etc.)
+    }
+
+    match /notifications/{notifId} {
+      allow read: if isAdminOrSubadmin();
+      allow write: if false;
+    }
+  }
+}

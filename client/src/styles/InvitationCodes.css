@@ -1,0 +1,261 @@
+/* ==========================================================================
+   INVITATION CODES STYLES (ISO & UX/UI System)
+   ========================================================================== */
+
+.invitation-codes-container {
+  padding: 24px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.ic-header {
+  margin-bottom: 28px;
+}
+
+.ic-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.ic-title-underline {
+  width: 36px;
+  height: 4px;
+  background-color: #E04F33;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.ic-subtitle {
+  color: #6B7280;
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+/* Generator Form Card (Top Controls) */
+.ic-generator-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ic-generator-grid {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ic-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 160px;
+}
+
+.ic-form-field-flex {
+  flex: 1.5;
+  min-width: 200px;
+}
+
+.ic-field-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.ic-select-input {
+  width: 100%;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  background-color: #FFFFFF;
+  padding: 0 14px;
+  font-size: 0.9rem;
+  color: #111827;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%3c9CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
+.ic-select-input:focus {
+  border-color: #E04F33;
+  box-shadow: 0 0 0 3px rgba(224, 79, 51, 0.1);
+}
+
+.ic-btn-generate {
+  background-color: #FFFFFF;
+  color: #E04F33;
+  border: 1.5px solid #E04F33;
+  border-radius: 10px;
+  height: 44px;
+  padding: 0 20px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.ic-btn-generate:hover:not(:disabled) {
+  background-color: #E04F33;
+  color: #FFFFFF;
+}
+
+.ic-btn-generate:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ic-error-banner {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background-color: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: #991B1B;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+/* Codes Table Section */
+.ic-table-section {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+}
+
+.ic-section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 20px 0;
+}
+
+.ic-table-container {
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  overflow: hidden;
+}
+
+.ic-table-header {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 180px;
+  padding: 14px 20px;
+  background-color: #F9FAFB;
+  border-bottom: 1px solid #E5E7EB;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #374151;
+}
+
+.ic-table-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 180px;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #F3F4F6;
+  font-size: 0.9rem;
+}
+
+.ic-table-row:last-child {
+  border-bottom: none;
+}
+
+.ic-code-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: 0.5px;
+}
+
+.ic-role-text {
+  color: #4B5563;
+  font-size: 0.88rem;
+}
+
+/* Status Badges */
+.ic-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.ic-badge-active {
+  background-color: #DCFCE7;
+  color: #15803D;
+}
+
+.ic-badge-expired {
+  background-color: #FEE2E2;
+  color: #B91C1C;
+}
+
+.ic-badge-used {
+  background-color: #F3E8FF;
+  color: #6B21A8;
+}
+
+/* Action Buttons */
+.ic-actions-cell {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.ic-btn-action {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  color: #374151;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.ic-btn-action:hover {
+  background-color: #F9FAFB;
+  border-color: #D1D5DB;
+}
+
+.ic-btn-action-copied {
+  background-color: #ECFDF5;
+  border-color: #A7F3D0;
+  color: #047857;
+}
+
+.ic-empty-state {
+  padding: 40px;
+  text-align: center;
+  color: #6B7280;
+  font-size: 0.9rem;
+}

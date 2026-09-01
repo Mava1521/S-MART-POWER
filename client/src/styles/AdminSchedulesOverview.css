@@ -1,0 +1,282 @@
+.schedules-page-container {
+  padding: 32px 40px;
+  background-color: #ffffff;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Header */
+.schedules-header {
+  margin-bottom: 24px;
+}
+
+.schedules-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.accent-line {
+  display: block;
+  width: 40px;
+  height: 4px;
+  background-color: #E5533D;
+  margin: 6px 0 12px 0;
+  border-radius: 2px;
+}
+
+.schedules-subtitle {
+  font-size: 0.95rem;
+  color: #6B7280;
+  margin: 0;
+}
+
+/* Buscador */
+.search-container {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9CA3AF;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 18px 14px 50px;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #E5533D;
+}
+
+.search-input::placeholder {
+  color: #D1D5DB;
+}
+
+/* Lista y Tarjetas */
+.schedules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.schedule-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 18px;
+  background-color: #ffffff;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.schedule-card:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Sección Izquierda de la Tarjeta */
+.schedule-card-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.zone-color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.zone-icon-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #FFF2EE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.building-icon {
+  color: #111827;
+}
+
+.zone-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.zone-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 2px 0;
+}
+
+.event-name {
+  font-size: 0.85rem;
+  color: #6B7280;
+  margin: 0;
+}
+
+/* Sección Derecha de la Tarjeta */
+.schedule-card-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Píldoras de Información */
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+.status-pill-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-label {
+  font-size: 0.65rem;
+  color: #9CA3AF;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.status-value {
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Píldora Genérica de Cronogramas */
+.info-pill {
+  color: #4B5563;
+}
+
+.info-pill .status-value {
+  color: #111827;
+}
+
+/* Píldora "Por Revisar" (Naranja) */
+.status-pending {
+  color: #E5533D;
+  border-color: #FEE2E2;
+}
+
+.status-pending .status-value {
+  color: #E5533D;
+}
+
+/* Píldora "Aprobado" (Verde) */
+.status-approved {
+  color: #10B981;
+  border-color: #D1FAE5;
+}
+
+.status-approved .status-value {
+  color: #10B981;
+}
+
+/* Botón Ver Detalle */
+.btn-view-detail {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #111827;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-view-detail:hover {
+  border-color: #E5533D;
+  color: #E5533D;
+  background-color: #FFF2EE;
+}
+
+.nav-arrow-link {
+  color: #111827;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  transition: transform 0.2s;
+}
+
+.nav-arrow-link:hover {
+  transform: translateX(3px);
+  color: #E5533D;
+}
+
+/* Banner Informativo Inferior */
+.info-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #F9FAFB;
+  border: 1px solid #F3F4F6;
+  padding: 16px 20px;
+  border-radius: 16px;
+  margin-top: 12px;
+}
+
+.info-banner-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #FFF2EE;
+  color: #E5533D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-banner-content h4 {
+  margin: 0 0 2px 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.info-banner-content p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #6B7280;
+}
+
+.empty-state, .loading-text {
+  text-align: center;
+  color: #6B7280;
+  padding: 40px 0;
+}

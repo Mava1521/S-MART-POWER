@@ -1,0 +1,451 @@
+.events-page-container {
+  padding: 30px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Header */
+.events-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.events-header-title h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.accent-line {
+  display: block;
+  width: 40px;
+  height: 4px;
+  background-color: #E5533D;
+  margin: 4px 0 12px 0;
+  border-radius: 2px;
+}
+
+.events-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+}
+
+.btn-primary-orange {
+  background-color: #E5533D;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary-orange:hover {
+  background-color: #d0432d;
+}
+
+/* Search Bar */
+.search-container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9CA3AF;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  border-color: #E5533D;
+}
+
+/* Grilla de Eventos */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 1100px) {
+  .events-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .events-grid { grid-template-columns: 1fr; }
+}
+
+.event-card {
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important; /* Garantiza altura uniforme */
+}
+
+.event-card-image-wrapper {
+  height: 180px;
+  background-color: #F9FAFB;
+  border-bottom: 1px solid #E5E7EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-card-placeholder {
+  color: #9CA3AF;
+  font-size: 0.9rem;
+}
+
+.event-card-content {
+  padding: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important; /* Estira el contenido */
+}
+
+.event-card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #111827;
+  text-transform: uppercase;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.event-card-schedule {
+  font-size: 0.82rem;
+  color: #6B7280;
+  text-align: center;
+  margin: 0 0 16px 0;
+}
+
+.highlight-text {
+  color: #E5533D;
+  font-weight: 600;
+}
+
+.assignment-status {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin-bottom: 20px !important;
+  background-color: #F9FAFB !important;
+  padding: 12px !important;
+  border-radius: 10px !important;
+  min-height: 64px !important; /* Mantiene exactamente la misma altura en todas las tarjetas */
+}
+
+.status-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 0.78rem !important;
+  color: #9CA3AF !important;
+  line-height: 1.3 !important;
+}
+
+.status-item svg {
+  color: #E5533D !important;
+  stroke: #E5533D !important;
+  flex-shrink: 0 !important;
+}
+
+.status-icon {
+  color: #E5533D;
+}
+
+/* Matriz de acciones 3x2 */
+.card-actions-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 10px !important;
+  margin-top: auto !important; /* Empuja los botones hacia el fondo */
+}
+
+.action-btn {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 12px 8px !important;
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  color: #111827 !important; /* Texto en negro */
+  text-decoration: none !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.action-btn svg {
+  color: #E5533D !important;
+  stroke: #E5533D !important;
+}
+
+.action-btn:hover {
+  border-color: #E5533D;
+  color: #E5533D;
+}
+
+/* Banner de Información Inferior */
+.info-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: #FFF2EE;
+  padding: 16px 20px;
+  border-radius: 14px;
+}
+
+.info-banner-icon {
+  background: #ffffff;
+  color: #E5533D;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+}
+
+.info-banner-text {
+  font-size: 0.88rem;
+  color: #374151;
+  margin: 0;
+}
+
+/* Modales */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.modal-card {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 540px;
+  padding: 30px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-card.small {
+  max-width: 400px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.accent-bar {
+  width: 4px;
+  height: 24px;
+  background-color: #E5533D;
+  border-radius: 2px;
+}
+
+.modal-header h2 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #111827;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6B7280;
+}
+
+/* Dropzone de Archivos */
+.dropzone {
+  border: 2px dashed #E5533D;
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.dropzone-icon {
+  color: #E5533D;
+}
+
+.dropzone-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.dropzone-subtext {
+  font-size: 0.75rem;
+  color: #9CA3AF;
+}
+
+.dropzone-active {
+  border-color: #E5533D;
+  background-color: #FFF7F5;
+}
+
+.selected-filename {
+  font-size: 0.78rem;
+  color: #374151;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.btn-select-file {
+  background-color: #E5533D;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #4B5563;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.flex-1 { flex: 1; }
+
+.label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.input-text, .input-select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+/* Envoltorio para inputs con ícono a la izquierda (fecha, duración). Antes estas clases
+   no existían en el CSS: el ícono quedaba flotando encima del texto escrito porque el
+   input no tenía el padding-left necesario para dejarle espacio. */
+.input-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  color: #9CA3AF;
+  pointer-events: none;
+}
+
+.input-text.with-icon,
+.input-select.with-icon {
+  padding-left: 42px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.modal-actions-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.subtext {
+  font-size: 0.85rem;
+  color: #6B7280;
+  margin: 4px 0 20px 0;
+}
+
+.btn-submit {
+  background-color: #E5533D;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}

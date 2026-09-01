@@ -1,0 +1,50 @@
+:root {
+  /* Marca S-MART POWER (Naranja oficial y variaciones) */
+  --color-brand: #FF4B0B;
+  --color-brand-hover: #e03e00;
+  --color-brand-text: #ffffff;
+
+  /* Sala de control de producción: grafito oscuro + Naranja S-MART */
+  --color-bg: #ffffff;             
+  --color-surface: #ffffff;        
+  --color-surface-raised: #f9fafb;  
+  --color-border: #e5e7eb;          
+  --color-border-strong: #d1d5db;
+  --color-text: #111827;            
+  --color-text-muted: #4b5563;
+  --color-text-faint: #9ca3af;
+
+  /* Accent unificado con la marca S-MART */
+  --color-accent: var(--color-brand);
+  --color-accent-strong: var(--color-brand-hover);
+  --color-accent-text: var(--color-brand-text);
+
+  --color-success: #4caf7d;
+  --color-success-bg: rgba(76, 175, 125, 0.12);
+  --color-danger: #e5484d;
+  --color-danger-bg: rgba(229, 72, 77, 0.12);
+
+  /* Tipografía */
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Consolas, monospace;
+
+  /* Espaciado */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+
+  --sidebar-width: 240px;
+  --topbar-height: 64px;
+  --bottomnav-height: 64px;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.28);
+}

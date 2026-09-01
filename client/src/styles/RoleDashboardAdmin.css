@@ -1,0 +1,159 @@
+/* Reset del contenedor para sobrescribir el fondo oscuro global */
+.dashboard-container {
+  padding: 40px !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  background-color: #ffffff !important;
+  box-sizing: border-box !important;
+}
+
+/* Encabezado */
+.dashboard-header {
+  margin-bottom: 36px !important;
+}
+
+.dashboard-title-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 20px !important;
+}
+
+.title-accent-bar {
+  width: 6px !important;
+  height: 36px !important;
+  background-color: #E5533D !important;
+  border-radius: 4px !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+}
+
+/* Estilos para forzar el texto negro de PANEL y rojo de DE CONTROL */
+.dashboard-title {
+  font-size: 2.1rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px !important;
+  margin: 0 !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+}
+
+.dashboard-title span {
+  color: #111827 !important; /* Color negro/oscuro para PANEL */
+}
+
+.dashboard-title span.highlight {
+  color: #E5533D !important; /* Color naranja/rojo para DE CONTROL */
+}
+
+.dashboard-subtitle-bold {
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  color: #111827 !important;
+  margin: 0 0 10px 0 !important;
+}
+
+.dashboard-subtitle-text {
+  font-weight: 400 !important;
+  font-size: 0.95rem !important;
+  color: #4B5563 !important;
+  margin: 0 !important;
+  max-width: 650px !important;
+  line-height: 1.5 !important;
+}
+
+/* Grilla de 3 Columnas */
+.dashboard-feature-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 20px !important;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-feature-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-feature-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Estilos de las tarjetas */
+.dashboard-feature-card {
+  background: #ffffff !important;
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 18px !important;
+  padding: 22px 20px !important;
+  text-decoration: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 135px !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+
+.dashboard-feature-card:hover {
+  transform: translateY(-2px) !important;
+  border-color: #FDBA74 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05) !important;
+}
+
+.card-top-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin-bottom: 14px !important;
+}
+
+.card-icon-box {
+  width: 50px !important;
+  height: 50px !important;
+  background-color: #FFF2EE !important;
+  border-radius: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #E5533D !important;
+  flex-shrink: 0 !important;
+}
+
+.card-title {
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  margin: 0 !important;
+  flex-grow: 1 !important;
+}
+
+.card-arrow {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.card-description {
+  font-size: 0.88rem !important;
+  color: #4B5563 !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+}
+
+/* Extender el contenedor al 100% del viewport */
+:host, 
+body, 
+#root, 
+main, 
+.content, 
+.main-content {
+  background-color: #ffffff !important;
+}
+
+.dashboard-container {
+  min-height: 100vh !important;
+  width: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
