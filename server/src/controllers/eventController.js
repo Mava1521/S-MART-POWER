@@ -1,6 +1,7 @@
 import { db } from "../config/firebaseAdmin.js";
 import cloudinary from "../config/cloudinary.js";
 import { logAudit } from "../services/auditService.js";
+import { buildHighQualityUrl } from "../utils/imageQuality.js";
 
 const eventsCollection = db.collection("events");
 
@@ -22,10 +23,12 @@ export async function createEvent(req, res, next) {
         );
         stream.end(req.file.buffer);
       });
-      // "q_auto,f_auto" comprime automáticamente sin perder nitidez; "e_grayscale" es opcional
-      // (reduce aún más el peso, sin quitar ningún detalle del plano, solo el color).
-      const transform = grayscale === "true" || grayscale === true ? "e_grayscale,q_auto,f_auto" : "q_auto,f_auto";
-      venueImageUrl = uploadResult.secure_url.replace("/upload/", `/upload/${transform}/`);
+      // "q_auto:best" pide la máxima calidad visual que Cloudinary pueda dar (en vez de
+      // priorizar peso de archivo); si el plano subido es pequeño/borroso, buildHighQualityUrl
+      // además lo reescala con nitidez para que se vea mejor a pantalla completa o con zoom.
+      // "e_grayscale" sigue siendo opcional y lo decide quien crea el evento.
+      const extraEffects = grayscale === "true" || grayscale === true ? ["e_grayscale"] : [];
+      venueImageUrl = buildHighQualityUrl(uploadResult, extraEffects);
     }
 
     const ref = await eventsCollection.add({

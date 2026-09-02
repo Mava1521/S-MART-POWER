@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../services/api";
 import { useAuth } from "../../context/AuthContext";
 import { useToast } from "../../context/ToastContext";
+import { toUppercaseLettersOnly } from "../../utils/textInput";
 
 /**
  * Lista + edición inline de la biblioteca. El borrado solo se muestra a admin.
@@ -115,7 +116,7 @@ export default function DeviceList({ refreshKey, categories, onCategoryCreated, 
                     </div>
                     {canCreateCategory && (
                       <div style={{ display: "flex", gap: 6, marginBottom: 6 }}>
-                        <input className="input" placeholder="+ Nueva categoría" value={newCategoryName} onChange={(e) => setNewCategoryName(e.target.value)} />
+                        <input className="input" placeholder="+ Nueva categoría" value={newCategoryName} onChange={(e) => setNewCategoryName(toUppercaseLettersOnly(e.target.value))} />
                         <button type="button" className="btn btn-secondary btn-sm" onClick={createCategoryInline}>Crear</button>
                       </div>
                     )}

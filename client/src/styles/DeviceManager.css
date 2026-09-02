@@ -555,3 +555,8 @@
   border-color: #E5533D;
   background-color: #FFF7F5;
 }
+
+.upload-dropzone-hint {
+  font-size: 0.72rem;
+  color: #9CA3AF;
+}

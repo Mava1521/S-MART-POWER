@@ -2,6 +2,7 @@ import { db } from "../config/firebaseAdmin.js";
 import { logAudit } from "../services/auditService.js";
 
 const LOCK_HOURS = 48;
+const EDIT_CUTOFF_DAYS = 2;
 
 const placementsRef = (eventId, zoneId) =>
   db.collection("events").doc(eventId).collection("zones").doc(zoneId).collection("placements");
@@ -92,6 +93,20 @@ function isLocked(scheduleData) {
     return hoursSinceSent >= LOCK_HOURS;
   }
   return false;
+}
+
+/**
+ * ¿Ya entramos en la ventana de "no más cambios de último momento"? Se bloquea la edición
+ * desde EDIT_CUTOFF_DAYS (2 días) antes de que empiece la entrega (scheduleStartDate del
+ * evento), sin importar si el usuario ya envió su cronograma o no — a diferencia de
+ * isLocked(), que solo bloquea DESPUÉS de enviar. Esta regla existe para que nadie reciba
+ * un cambio de cantidades a última hora, cuando ya no da tiempo de reaccionar.
+ */
+function isPastEditDeadline(event) {
+  if (!event?.scheduleStartDate) return false;
+  const cutoff = new Date(event.scheduleStartDate + "T00:00:00");
+  cutoff.setDate(cutoff.getDate() - EDIT_CUTOFF_DAYS);
+  return new Date() >= cutoff;
 }
 
 /**
@@ -198,13 +213,15 @@ export async function getMySchedule(req, res, next) {
     ]);
 
     if (!eventSnap.exists) return res.status(404).json({ error: "Evento no encontrado" });
-    const fixedDates = buildDatesFromEvent(eventSnap.data());
+    const eventData = eventSnap.data();
+    const fixedDates = buildDatesFromEvent(eventData);
     const savedData = docSnap.exists ? docSnap.data() : {};
     const savedByDate = Object.fromEntries((savedData.days || []).map((d) => [d.date, d.allocations || {}]));
     const days = fixedDates.map((date) => ({ date, allocations: savedByDate[date] || {} }));
 
     const deliveries = savedData.deliveries || [];
-    const locked = isLocked(savedData);
+    const deadlinePassed = isPastEditDeadline(eventData);
+    const locked = isLocked(savedData) || deadlinePassed;
 
     let contact = null;
     if (req.user.role === "user" && (locked || savedData.reviewStatus === "approved")) {
@@ -222,6 +239,8 @@ export async function getMySchedule(req, res, next) {
       sentAt: savedData.sentAt || null,
       approvedAt: savedData.approvedAt || null,
       locked,
+      lockReason: locked ? (deadlinePassed ? "deadline" : "sent_48h") : null,
+      editCutoffDays: EDIT_CUTOFF_DAYS,
       contact,
       totals,
       progress: stripPercentIfUser(req.user.role, computeProgress(totals, days)),
@@ -243,11 +262,19 @@ export async function upsertMySchedule(req, res, next) {
     }
 
     const docRef = schedulesRef(eventId, zoneId).doc(req.user.uid);
-    const existingSnap = await docRef.get();
+    const [existingSnap, eventSnap] = await Promise.all([
+      docRef.get(),
+      db.collection("events").doc(eventId).get(),
+    ]);
     const existingData = existingSnap.exists ? existingSnap.data() : null;
 
     if (isLocked(existingData)) {
       return res.status(423).json({ error: "Este cronograma ya está bloqueado y no se puede editar. Contacta a tu superior." });
+    }
+    if (isPastEditDeadline(eventSnap.data())) {
+      return res.status(423).json({
+        error: `Ya no se puede editar: faltan menos de ${EDIT_CUTOFF_DAYS} días para que empiece la entrega. Contacta a tu superior si necesitas un cambio.`,
+      });
     }
 
     const totals = await computeTotalsByDevice(eventId, zoneId);
@@ -330,11 +357,19 @@ export async function setMyAllocation(req, res, next) {
     }
 
     const docRef = schedulesRef(eventId, zoneId).doc(req.user.uid);
-    const existingSnap = await docRef.get();
+    const [existingSnap, eventSnap] = await Promise.all([
+      docRef.get(),
+      db.collection("events").doc(eventId).get(),
+    ]);
     const existingData = existingSnap.exists ? existingSnap.data() : null;
 
     if (isLocked(existingData)) {
       return res.status(423).json({ error: "Este cronograma ya está bloqueado y no se puede editar. Contacta a tu superior." });
+    }
+    if (isPastEditDeadline(eventSnap.data())) {
+      return res.status(423).json({
+        error: `Ya no se puede editar: faltan menos de ${EDIT_CUTOFF_DAYS} días para que empiece la entrega. Contacta a tu superior si necesitas un cambio.`,
+      });
     }
 
     const totals = await computeTotalsByDevice(eventId, zoneId);

@@ -107,7 +107,7 @@
 
 .topbar {
   height: var(--topbar-height);
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--space-4);
@@ -134,6 +134,21 @@
 .page-content {
   padding: var(--space-6);
   max-width: 1100px;
+  /* Antes el contenido quedaba pegado al borde izquierdo del área principal en pantallas
+     grandes (sin margin:auto), dejando un vacío enorme a la derecha del monitor y dando la
+     sensación de que la página "no se ajustaba" — con esto queda centrado siempre,
+     manteniendo un ancho de lectura cómodo en vez de estirarse de borde a borde. */
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* En monitores muy grandes, aprovechar algo más de ancho en vez de dejar tanto margen
+   muerto a los lados (pero sin llegar a estirar tablas/formularios de borde a borde). */
+@media (min-width: 1600px) {
+  .page-content {
+    max-width: 1320px;
+  }
 }
 
 /* ---- Mobile: sidebar barra inferior + topbar ---- */

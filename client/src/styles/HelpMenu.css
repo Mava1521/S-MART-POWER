@@ -1,0 +1,103 @@
+.help-menu {
+  position: relative;
+}
+
+.help-menu-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-strong, #D1D5DB);
+  background: var(--color-surface, #fff);
+  color: var(--color-text-muted, #6B7280);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.help-menu-trigger:hover,
+.help-menu-trigger[aria-expanded="true"] {
+  background: rgba(255, 75, 11, 0.1);
+  color: var(--color-brand, #E5533D);
+  border-color: var(--color-brand, #E5533D);
+}
+
+.help-menu-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  max-height: 70vh;
+  overflow-y: auto;
+  background: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #E5E7EB);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(17, 24, 39, 0.16);
+  z-index: 60;
+}
+
+.help-menu-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border, #E5E7EB);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text, #111827);
+  position: sticky;
+  top: 0;
+  background: var(--color-surface, #fff);
+}
+
+.help-menu-close {
+  background: none;
+  border: none;
+  color: var(--color-text-muted, #6B7280);
+  cursor: pointer;
+  display: flex;
+  padding: 2px;
+}
+
+.help-menu-topics {
+  padding: 6px;
+}
+
+.help-menu-topic {
+  border-bottom: 1px solid var(--color-border, #F3F4F6);
+}
+
+.help-menu-topic:last-child {
+  border-bottom: none;
+}
+
+.help-menu-topic-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 8px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text, #111827);
+  cursor: pointer;
+}
+
+.help-menu-topic-caret {
+  color: var(--color-brand, #E5533D);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.help-menu-topic-answer {
+  margin: 0 8px 12px;
+  font-size: 0.82rem;
+  color: var(--color-text-muted, #6B7280);
+  line-height: 1.5;
+}

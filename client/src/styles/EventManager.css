@@ -109,6 +109,23 @@
   height: 100% !important; /* Garantiza altura uniforme */
 }
 
+.event-card-clickable {
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+.event-card-clickable:hover,
+.event-card-clickable:focus-visible {
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.1);
+  transform: translateY(-2px);
+  border-color: #E5533D !important;
+}
+
+.event-card-clickable:focus-visible {
+  outline: 2px solid #E5533D;
+  outline-offset: 2px;
+}
+
 .event-card-image-wrapper {
   height: 180px;
   background-color: #F9FAFB;

@@ -110,7 +110,7 @@ export default function CreateEventModal({ isOpen, onClose, onEventCreated }) {
               {/* El backend (multer fileFilter) solo acepta imágenes, así que el texto
                   no debe ofrecer PDF: prometer un formato que luego el servidor rechaza
                   es peor experiencia que no mencionarlo. */}
-              <span className="dropzone-subtext">Formatos: JPG, PNG</span>
+              <span className="dropzone-subtext">Formatos: JPG, PNG · hasta 20MB · se sube en la mejor calidad posible</span>
 
               <label htmlFor="file-upload" className="btn-select-file">
                 + Seleccionar archivos

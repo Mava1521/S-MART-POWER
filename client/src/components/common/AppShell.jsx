@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useInactivityLogout } from "../../hooks/useInactivityLogout";
 import { NAV_BY_ROLE, ROLE_LABEL } from "../../config/navigation";
 import ForcePasswordChangeModal from "./ForcePasswordChangeModal";
+import HelpMenu from "./HelpMenu";
 import api from "../../services/api";
 import logoSmart from "../../assets/Imagenes/imagotipo_smart.png";
 
@@ -94,6 +95,7 @@ export default function AppShell({ children, title }) {
       <div className="main-area">
         <header className="topbar">
           <strong>{title}</strong>
+          <HelpMenu />
         </header>
 
         <main className="page-content">{children}</main>

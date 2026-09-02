@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import { useAuth } from "../../context/AuthContext";
 import { useToast } from "../../context/ToastContext";
@@ -15,6 +15,7 @@ const todayISO = () => new Date().toISOString().slice(0, 10);
 export default function EventManager() {
   const { profile } = useAuth();
   const { showSuccess } = useToast();
+  const navigate = useNavigate();
   const isAdmin = profile?.role === "admin";
   
   const [events, setEvents] = useState([]);
@@ -116,7 +117,20 @@ export default function EventManager() {
       ) : (
         <div className="events-grid">
           {filteredEvents.map((ev) => (
-            <div className="event-card" key={ev.id}>
+            <div
+              className="event-card event-card-clickable"
+              key={ev.id}
+              role="button"
+              tabIndex={0}
+              onClick={() => navigate(`/admin/events/${ev.id}/zones`)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  navigate(`/admin/events/${ev.id}/zones`);
+                }
+              }}
+              aria-label={`Ver zonas de ${ev.name}`}
+            >
               {/* Imagen del plano */}
               <div className="event-card-image-wrapper">
                 {ev.venueImageUrl ? (
@@ -155,8 +169,11 @@ export default function EventManager() {
                   </div>
                 )}
 
-                {/* Botones de acción en cuadrícula 3x2 */}
-                <div className="card-actions-grid">
+                {/* Botones de acción en cuadrícula 3x2. stopPropagation: la tarjeta completa
+                    ahora navega a "Zonas" al hacer clic, así que los botones de acción deben
+                    frenar la propagación para conservar su propio destino (Equipo, Historial,
+                    Fechas, etc.) en vez de que el clic termine siempre en "Zonas". */}
+                <div className="card-actions-grid" onClick={(e) => e.stopPropagation()}>
                   <Link to={`/admin/events/${ev.id}/zones`} className="action-btn">
                     <Map size={20} className="action-icon" />
                     <span>Zonas</span>

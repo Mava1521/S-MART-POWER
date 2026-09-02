@@ -1,6 +1,7 @@
 import { db } from "../config/firebaseAdmin.js";
 import cloudinary from "../config/cloudinary.js";
 import { logAudit } from "../services/auditService.js";
+import { buildHighQualityUrl } from "../utils/imageQuality.js";
 
 const devicesCollection = db.collection("devices");
 
@@ -72,7 +73,7 @@ export async function createDevice(req, res, next) {
         );
         stream.end(req.file.buffer);
       });
-      photoUrl = uploadResult.secure_url;
+      photoUrl = buildHighQualityUrl(uploadResult);
     }
 
     const ref = await devicesCollection.add({
@@ -137,7 +138,7 @@ export async function updateDevice(req, res, next) {
         );
         stream.end(req.file.buffer);
       });
-      updates.photoUrl = uploadResult.secure_url;
+      updates.photoUrl = buildHighQualityUrl(uploadResult);
     }
 
     await devicesCollection.doc(id).update(updates);

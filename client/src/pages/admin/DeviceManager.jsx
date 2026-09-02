@@ -3,6 +3,7 @@ import DeviceList from "../../components/devices/DeviceList";
 import { useAuth } from "../../context/AuthContext";
 import { useToast } from "../../context/ToastContext";
 import api from "../../services/api";
+import { toUppercaseLettersOnly } from "../../utils/textInput";
 import { 
   Plus, 
   Search, 
@@ -251,7 +252,7 @@ function CategoriesModal({ isOpen, onClose, categories, onCreated, onUpdated, on
             className="modal-input"
             placeholder="Nombre de la nueva categoría"
             value={newName}
-            onChange={(e) => setNewName(e.target.value)}
+            onChange={(e) => setNewName(toUppercaseLettersOnly(e.target.value))}
           />
           <button className="btn-orange-solid" onClick={submitNew} disabled={saving}>
             <Plus size={16} />
@@ -275,7 +276,7 @@ function CategoriesModal({ isOpen, onClose, categories, onCreated, onUpdated, on
                       <input
                         className="modal-input"
                         value={editName}
-                        onChange={(e) => setEditName(e.target.value)}
+                        onChange={(e) => setEditName(toUppercaseLettersOnly(e.target.value))}
                         autoFocus
                       />
                       <button className="btn-orange-sm" onClick={() => submitRename(c.id)} disabled={saving}>Guardar</button>
@@ -468,6 +469,7 @@ function CreateItemModal({ isOpen, onClose, categories, onCreated }) {
               <p>
                 {imageFile ? imageFile.name : "Arrastra aquí tu imagen o haz clic para seleccionarla"}
               </p>
+              <span className="upload-dropzone-hint">Hasta 20MB · se sube en la mejor calidad posible</span>
               <label className="btn-orange-solid btn-file-picker">
                 Seleccionar archivos
                 <input

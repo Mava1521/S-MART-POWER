@@ -43,6 +43,8 @@ export default function ScheduleBuilder() {
   const [reviewChain, setReviewChain] = useState(null);
   const [approvedAt, setApprovedAt] = useState(null);
   const [locked, setLocked] = useState(false);
+  const [lockReason, setLockReason] = useState(null);
+  const [editCutoffDays, setEditCutoffDays] = useState(2);
   const [contact, setContact] = useState(null);
   const [sentAt, setSentAt] = useState(null);
   const [showSentPopup, setShowSentPopup] = useState(false);
@@ -64,6 +66,8 @@ export default function ScheduleBuilder() {
     setReviewChain(res.data.reviewChain || null);
     setApprovedAt(res.data.approvedAt || null);
     setLocked(!!res.data.locked);
+    setLockReason(res.data.lockReason || null);
+    setEditCutoffDays(res.data.editCutoffDays || 2);
     setContact(res.data.contact || null);
     setSentAt(res.data.sentAt || null);
     setLoading(false);
@@ -138,7 +142,10 @@ export default function ScheduleBuilder() {
       )}
       {locked && (
         <div className="error-message">
-          <strong>Este cronograma ya no se puede editar.</strong> Pasaron 48 horas desde que lo enviaste (o fue congelado).
+          <strong>Este cronograma ya no se puede editar.</strong>{" "}
+          {lockReason === "deadline"
+            ? `Ya empezó la ventana de ${editCutoffDays} días antes de la entrega, así que las cantidades quedaron congeladas para que nadie haga cambios de último momento.`
+            : "Pasaron 48 horas desde que lo enviaste (o fue congelado)."}
           {contact && (
             <div style={{ marginTop: 6 }}>
               Si necesitas modificarlo, contacta a {contact.name || contact.role}: {contact.email}{contact.phone ? ` · ${contact.phone}` : ""}
